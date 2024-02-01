@@ -10,11 +10,11 @@ class MinHeap {
     }
   }
 
-  getHeap() {
+  get heap() {
     return this.heapArr;
   }
 
-  getFront() {
+  get front() {
     return this.heapArr[0];
   }
 
@@ -104,4 +104,4 @@ class MinHeap {
 // console.log(minHeap.getFront());
 
 const minHeap = new MinHeap([1, 6, 7, 4, 89, 12]);
-console.log(minHeap.getHeap());
+console.log(minHeap.heap);
