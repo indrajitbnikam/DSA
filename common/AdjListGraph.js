@@ -1,4 +1,4 @@
-// simple graph
+// simple non-weighted directional graph
 class Graph {
   #adjList;
 
@@ -26,6 +26,7 @@ class Graph {
 
     // add entries
     this.#adjList.set(srcNode, [...srcNodeConnections, destNode]);
+    // to make graph undirected repeat above step for destNode by adding srcNode in it's connections
   }
 }
 
