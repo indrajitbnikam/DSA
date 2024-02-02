@@ -1,21 +1,16 @@
-const bfsIterative = (graph, sourceKey) => {
-  const visitedSet = new Set();
-  const nodeQueue = [sourceKey];
+const dfsRecursive = (graph, sourceNode, visitedNodes = new Set()) => {
+  if (visitedNodes.has(sourceNode)) {
+    return;
+  }
 
-  while (nodeQueue.length) {
-    const currKey = nodeQueue.shift();
-    visitedSet.add(currKey);
-    console.log(currKey);
+  visitedNodes.add(sourceNode);
+  console.log(sourceNode);
 
-    for (let connection of graph.get(currKey)) {
-      if (!visitedSet.has(connection)) {
-        nodeQueue.push(connection)
-      }
-    }
+  for (let connection of graph.get(sourceNode)) {
+    dfsRecursive(graph, connection, visitedNodes);
   }
 }
 
-// simple graph
 class Graph {
   #adjList;
 
@@ -43,6 +38,7 @@ class Graph {
 
     // add entries
     this.#adjList.set(srcNode, [...srcNodeConnections, destNode]);
+    // to make graph undirected repeat above step for destNode by adding srcNode in it's connections
   }
 }
 
@@ -54,4 +50,4 @@ graphObj.add(2, 0);
 graphObj.add(2, 3);
 graphObj.add(3, 3);
 
-bfsIterative(graphObj.graph, 2);
+dfsRecursive(graphObj.graph, 0);
