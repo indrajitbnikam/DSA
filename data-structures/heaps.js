@@ -37,8 +37,12 @@ class MinHeap {
 
   pop() {
     const poppedElement = this.heapArr[0];
-    this.heapArr[0] = this.heapArr.pop();
-    this.heapifyDown(0);
+    if (this.heapArr.length > 1) {
+      this.heapArr[0] = this.heapArr.pop();
+      this.heapifyDown(0);
+    } else {
+      this.heapArr.pop();
+    }
 
     return poppedElement;
   }
@@ -105,3 +109,10 @@ class MinHeap {
 
 const minHeap = new MinHeap([1, 6, 7, 4, 89, 12]);
 console.log(minHeap.heap);
+// console.log(minHeap.pop());
+// console.log(minHeap.pop());
+// console.log(minHeap.pop());
+// console.log(minHeap.pop());
+// console.log(minHeap.pop());
+// console.log(minHeap.heap);
+
